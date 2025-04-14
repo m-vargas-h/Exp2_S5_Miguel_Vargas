@@ -288,18 +288,9 @@
                         }
                         break;
 
-                        case 7:         //salir del programa
-                        if (entradaAcumulada == 0) {
-                            System.out.println("\nGracias por usar nuestro sistema. ¡Hasta luego!");
-                            continuar = false;          //finaliza el programa saliendo del bucle principal
-                        } else {
-                            System.out.println("\nTiene compras pendientes de pago.");
-                            System.out.println("Se le redirigirá automáticamente al menú de pago.\n");
-                            
-                            //invoca directamente el método de pago
-                            procesarPago(scanner);          
-                            continuar = false;              //finaliza el programa saliendo del bucle principal
-                        }
+                    case 7:         //salir del programa
+                        salirMenu(scanner);
+                        continuar = false;
                         break;
                 
                     default:            //mensaje para opciones no validas 
@@ -372,7 +363,7 @@
         return precioBaseUltimaEntrada; 
     }
 
-    //bloque de código opción 6 - pago
+    //método de código opción 6 - pago
     public static void confirmarCompra(Scanner scanner, String metodoPago) {
         System.out.println("\nHas elegido el método de pago: " + metodoPago);
         System.out.println("Estamos procesando la compra...");
@@ -407,6 +398,19 @@
                 System.out.print(zona[fila][col] + " ");
             }
             System.out.println();
+        }
+    }
+
+    //método para opción 7 - salir
+    public static void salirMenu(Scanner scanner) {
+    if (entradaAcumulada == 0) {
+        System.out.println("\nGracias por usar nuestro sistema. ¡Hasta luego!");
+    } else {
+        System.out.println("\nTiene compras pendientes de pago.");
+        System.out.println("Se le redirigirá automáticamente al menú de pago.\n");
+        
+        // Invoca directamente el método de pago
+        procesarPago(scanner);
         }
     }
     
